@@ -1,0 +1,266 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+/* Program Statement
+*This program will calculate the tax from the inputted gross
+income of an individual alongside with the individual's salary after the tax reduction
+From assignment sheet
+"Write a program to read a person's name, filing status, and taxable income and write their state income tax.
+Verify salary (positive numbers only) and status (can only be joint or single), if invalid data is entered terminate
+the program with an error message. Pay special attention as how the tax is calculated."
+*
+***Analysis***
+
+Data needed
+
+**How much tax is deducted within a range of gross salary
+How much money a single individual makes for single taxes
+How much money individuals make for joint taxes
+The name of the individual
+
+
+Constants Given
+
+Computed tax formula for various of ranges of Gross Salaries
+
+Calculations
+
+Assumptions
+
+All numbers are assumed to be positive integers
+The heading of our name and programming assignment is assumed to be in each printout
+The user will input 'S','s','J','j' for filing status
+
+
+Calculate
+
+Calculate the amount of taxes owed after user inputs gross salary
+Calculate net salary from the gross salary and taxes
+
+Print Results
+
+Name of the Individual
+Filing Status of their tax form
+Gross Salary of the Individual
+Taxes that they owe (income tax)
+Salary after taxes (net salary)
+***End of Analysis***
+
+***Algorithm***
+Input
+Prompt user for their full name
+Prompt user for their taxable income(gross salary)
+Prompt user for their filing status (they enter either J(Joint) or S(Single))
+
+Process
+Verification
+
+we discussed this, it could be either in input or verification 
+*
+If user inputs their taxable income that isn't a positive integer
+Print error described - income isn't a positive integer
+Prompt user for taxable income(gross salary) again
+
+If user inputs a character not 'S','s','J','j'
+Print error described- status isn't S/s/J /j
+Prompt user for filing status again
+*
+
+If filing status is single (using 'S' or 's'):
+(Gross Salary > 0 and Gross Salary < 1710)
+income tax = 0
+Net Salary = Gross Salary - (income tax)
+
+(Gross Salary > 1710 and Gross Salary < 20930)
+
+income tax = 87.00 + (.03)(Gross Salary - 1710)
+Net Salary = Gross Salary - (income tax)
+
+(Gross Salary > 20930 and Gross Salary < 28790)
+
+income tax = 742.00 + (.08)(Gross Salary - 20930)
+Net Salary = Gross Salary - (income tax)
+
+(Gross Salary > 28790)
+
+income tax = 1449.60 + (.11)(Gross Salary - 28790)
+Net Salary = Gross Salary - (income tax)
+
+If filing status is joint(using 'J' or 'j'):
+(Gross Salary > 0 and Gross Salary < 3420)
+
+income tax = 0
+Net Salary = Gross Salary - (income tax)
+
+(Gross Salary > 3420 and Gross Salary < 47120)
+
+income tax = 330.00 + (.04)(Gross Salary - 3420)
+Net Salary = Gross Salary - (income tax)
+
+(Gross Salary > 47120 and Gross Salary < 57580)
+
+income tax = 1905.00 + (.09)(Gross Salary - 47120)
+Net Salary = Gross Salary - (income tax)
+
+(Gross Salary > 57580)
+
+income tax = 2899.20 + (.11)(Gross Salary - 57580)
+Net Salary = Gross Salary - (income tax)
+
+
+Output
+line 1	Print Name, Status, Gross Salary, Taxes, Net Salary with equal spacing between words
+line 2 	Print an empty line
+line 3	Print == as a divider in line 3
+line 4 	Print an empty line
+line 5	Print name of individual with LastName,FirstName
+line 5	Print filing status of individual whether they choose joint or single
+line 5	Print gross salary of individual
+line 5	Print taxes from gross salary of individual
+line 5	Print net salary of individual
+line 5	The items within line 5 are also going to have equal spacing between them  */
+void PrintPattern()
+{
+	char printPattern = '=';
+	cout << printPattern << printPattern << printPattern << printPattern;
+	cout << printPattern << printPattern << printPattern << printPattern;
+	cout << printPattern << printPattern << printPattern << printPattern;
+	cout << printPattern << printPattern << printPattern << printPattern;
+	cout << printPattern << printPattern << printPattern << printPattern;
+
+}
+
+int main() {
+	string firstName;
+	string lastName;
+
+	double grossSalary;
+	double incomeTax;
+	double netSalary;
+
+	char status;
+	netSalary = 0;
+	incomeTax = 0;
+
+	cout << "\tProgramming Assignment" << endl;
+	cout << "\tMaya Zeng" << endl;
+	cout << "\tComputer Science 1\n" << endl;
+
+	cout << "Enter your name: ";
+	getline(cin, firstName, ' ');
+	getline(cin, lastName);
+
+	cout << firstName << ", enter your taxable income: $";
+	cin >> grossSalary;
+	while (grossSalary < 0)
+
+	{
+
+		cout << "Taxable Income must be a positive integer" << endl;
+		cout << "Enter your taxable income: $";
+		cin >> grossSalary;
+
+	}
+
+	cout << "What is your filing status? (Enter S for single or J for joint):";
+	cin >> status;
+
+	while (status != 'J' && status != 'j' && status != 'S' && status != 's')
+
+	{
+
+		cout << "Must write S or J for status" << endl;
+		cout << "What is your filing status? (Enter S for single or J for joint):";
+		cin >> status;
+
+	}
+
+
+	/***Single Taxpayers***/
+
+	if (status == 'S' || status == 's')
+	{
+		if (grossSalary > 0 && grossSalary < 1710);
+		{
+			netSalary = grossSalary;
+		}
+		if (grossSalary > 1710 && grossSalary < 20930)
+		{
+			incomeTax = 87.00 + ((.03*(grossSalary - 1710)));
+			netSalary = grossSalary - incomeTax;
+
+		}
+		if (grossSalary > 20930 && grossSalary < 28790)
+		{
+			incomeTax = 742.40 + ((.08*(grossSalary - 20930)));
+			netSalary = grossSalary - incomeTax;
+		}
+
+		if (grossSalary > 28790)
+		{
+			incomeTax = 1449.60 + ((.11*(grossSalary - 28790)));
+			netSalary = grossSalary - incomeTax;
+
+		}
+
+		cout << left << showpoint << setprecision(2) << left << fixed << endl;
+		cout << setw(20) << "Name" << setw(15) << "Status" << setw(20) << "Gross Salary" << setw(15) << "Taxes" << setw(15) << "Net Salary" << endl;
+		PrintPattern();
+		PrintPattern();
+		PrintPattern();
+		PrintPattern();
+		cout << "\n";
+		cout << setw(20) << lastName + "," + firstName;
+
+		cout << setw(15) << "Single" << "$" << setw(19) << grossSalary << "$" << setw(14) << incomeTax << "$" << netSalary << endl;
+	}
+
+
+	/***Joint Taxpayer***/
+
+	if (status == 'J' || status == 'j')
+	{
+		if (grossSalary > 0 && grossSalary < 3420);
+		{
+			netSalary = grossSalary;
+		}
+		if (grossSalary > 3420 && grossSalary < 47120)
+		{
+			incomeTax = 330.00 + ((.04*(grossSalary - 3420)));
+			netSalary = grossSalary - incomeTax;
+
+		}
+		if (grossSalary > 47120 && grossSalary < 57580)
+		{
+			incomeTax = 1905.00 + ((.09*(grossSalary - 47120)));
+			netSalary = grossSalary - incomeTax;
+		}
+
+		if (grossSalary > 57580)
+		{
+			incomeTax = 2899.20 + ((.11*(grossSalary - 57580)));
+			netSalary = grossSalary - incomeTax;
+
+		}
+
+		cout << left << showpoint << setprecision(2) << left << fixed << endl;
+		cout << setw(20) << "Name" << setw(15) << "Status" << setw(20) << "Gross Salary" << setw(15) << "Taxes" << setw(15) << "Net Salary" << endl;
+		PrintPattern();
+		PrintPattern();
+		PrintPattern();
+		PrintPattern();
+		cout << "\n";
+		cout << setw(20) << lastName + "," + firstName;
+
+		cout << setw(15) << "Joint" << "$" << setw(19) << grossSalary << "$" << setw(14) << incomeTax << "$" << netSalary << endl;
+
+	}
+
+	cout << "Press Enter to continue" << endl;
+	cin.ignore();
+	getchar();
+	return 0;
+
+}

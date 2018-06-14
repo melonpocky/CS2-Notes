@@ -1,0 +1,59 @@
+while (!done)
+	{
+		cout << "*************Main Menu*************" << endl
+			<< "1. Create Manager instance from Keyboard" << endl
+			<< "2. Print Manager to Console" << endl
+			<< "3. Change Manager's Last Name" << endl
+			<< "4. Change Manager's Salary" << endl
+			<< "5. Change Manager's Bosses Title" << endl
+			<< "6. Print only Manager's Name and Salary to Console" << endl
+			<< "7. Print only Manager's Bosses Title to Console" << endl
+		
+			<< "8. Exit" << endl;
+		int choice;
+		cout << "Enter menu choice and press enter key: ";
+		cin >> choice;
+		if (choice == 8)
+		{
+			done = true;
+		}
+		else if (choice == 1) //Create Manager instance from Keyboard
+		{
+			FractionList::getInstance(FL); 
+		}
+		else if (choice == 2)//Print Manager to Console
+		{
+
+		}
+		else if (choice == 3)//Change Manager's Last Name
+		{
+			cout << FL.toString() << endl;
+		}
+		else if (choice == 4)//Change Manager's Salary
+		{
+			
+			
+		}
+		else if (choice == 5) //Print only Manager's Name and Salary to Console
+		{
+			FL.sort();
+			cout << FL.toString() << endl; 
+			
+		}
+		else if (choice == 6) //Change Manager's Bosses Title
+		{
+		}
+		else if (choice == 7) //Print only Manager's Bosses Title to Console
+		{
+			
+
+		}
+
+		else
+		{
+			cout << "Choice Invalid, enter new choice number" << endl;
+			cin >> choice;
+		}
+	}
+		return 0;
+}

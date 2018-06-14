@@ -1,0 +1,22 @@
+int GreatestCommonDenominator(int numerator, int denominator)
+
+{
+int findGCD;
+if (denominator == 0)
+{
+cout << "Cannot divide by 0" << endl;
+}
+
+while (denominator != 0)
+{
+findGCD = numerator%denominator;
+numerator = denominator;
+denominator = findGCD;
+
+
+}
+    
+
+return numerator;
+
+}
