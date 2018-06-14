@@ -1,7 +1,3 @@
-# CS2-Notes
-
-
-For reference and all
 
 # CS2-Notes
 
