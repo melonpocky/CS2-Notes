@@ -1,11 +1,5 @@
 #include "BankAccount.h"
 
-/***
-Maya Zeng
-CS2 0120
-Assignment 2 Part 1
-Professor Singhal
-***/
 
 //accesssors and getters nothing else 
 
